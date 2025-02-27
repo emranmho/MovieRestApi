@@ -1,6 +1,4 @@
-@Novies.API_HostAddress = http://localhost:5029
+@Novies.API_HostAddress = http://localhost:5001
 
-GET {{Novies.API_HostAddress}}/weatherforecast/
-Accept: application/json
 
 ###
