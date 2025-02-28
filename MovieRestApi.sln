@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "Movie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "MOvies.Contracts\Movies.Contracts.csproj", "{29F1A405-985D-4BEE-9625-5AC21BDB3015}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicCrudRestAPI", "BasicCrudRestAPI", "{AA52AB82-BFDD-4DB8-86FB-FD484DE409C7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestAPIStaticData", "RestAPIStaticData", "{AA52AB82-BFDD-4DB8-86FB-FD484DE409C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApiWithDb", "RestApiWithDb", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,12 +35,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5CEF6226-8FB0-478B-8FEF-AD4204AA6630}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6903C4B1-2428-4B81-BC20-492EA75B9D78} = {AA52AB82-BFDD-4DB8-86FB-FD484DE409C7}
 		{5FB5F4DB-1C20-4F80-92CD-F489AF685EBA} = {AA52AB82-BFDD-4DB8-86FB-FD484DE409C7}
 		{29F1A405-985D-4BEE-9625-5AC21BDB3015} = {AA52AB82-BFDD-4DB8-86FB-FD484DE409C7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CEF6226-8FB0-478B-8FEF-AD4204AA6630}
 	EndGlobalSection
 EndGlobal
