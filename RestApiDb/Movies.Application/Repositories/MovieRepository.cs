@@ -78,7 +78,7 @@ public class MovieRepository(IDbConnectionFactory dbConnectionFactory) : IMovieR
         return movie;
     }
 
-    public async Task<Movie?> GetBySlugsync(string slug)
+    public async Task<Movie?> GetBySlugAsync(string slug)
     {
         using var connection = await dbConnectionFactory.CreateConnectionAsync();
         var movie = await connection.QueryFirstOrDefaultAsync<Movie>(
