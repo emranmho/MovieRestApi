@@ -12,17 +12,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "RestApiStaticData\Movies.Contracts\Movies.Contracts.csproj", "{5FC7A8ED-1698-441D-B922-0C05B747993F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApiDb", "RestApiDb", "{CCCCD1D2-68F4-4A8D-8F4B-365836889427}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "RestApiDb\Movies.API\Movies.API.csproj", "{97CA30FF-FF80-436D-8BD2-E35B908E330B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "RestApiDb\Movies.Application\Movies.Application.csproj", "{46B803C6-252F-4D8A-B074-6B1AFBBE4A02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "RestApiDb\Movies.Contracts\Movies.Contracts.csproj", "{D84C1893-67E4-41C8-BCBF-FB3D49475980}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{13C644E6-60D5-41C0-B871-55A79DFD03D1}"
-	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
