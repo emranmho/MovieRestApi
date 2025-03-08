@@ -31,7 +31,7 @@ public class MovieRepository(IDbConnectionFactory dbConnectionFactory) : IMovieR
         return result > 0;
     }
 
-    public async Task<IEnumerable<Movie>> GetAllAsync(Guid? userId, CancellationToken token = default )
+    public async Task<IEnumerable<Movie>> GetAllAsync(GetAllMoviesOptions options, CancellationToken token = default )
     {
         using var connection = await dbConnectionFactory.CreateConnectionAsync(token);
         var result = await connection.QueryAsync(new CommandDefinition("""
@@ -44,8 +44,15 @@ public class MovieRepository(IDbConnectionFactory dbConnectionFactory) : IMovieR
             left join ratings r on m.Id = r.MovieId
             left join ratings myr on m.Id = myr.MovieId
                 and myr.UserId = @userId
+            where (@title is null or m.title like ('%' || @title || '%'))
+            and (@yearofrelease is null or m.yearofrelease = @yearofrelease)
             group by m.Id,userrating
-        """, new {userId}, cancellationToken: token));
+        """, new
+        {
+            userId = options.UserId,
+            title = options.Title,
+            yearofrelease = options.YearOfRelease
+        }, cancellationToken: token));
 
         var x = result.Select(row => new Movie
         {

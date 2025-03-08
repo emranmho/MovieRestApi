@@ -23,6 +23,21 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return CreatedAtAction(nameof(Get), new { idOrSlug = movie.Id }, movie);
     }
     
+    //just for quick bulk import
+    // [Authorize(AuthConstant.TrustedMemberPolicyName)]
+    // [HttpPost(ApiEndpoints.Movies.CreateBulk)]
+    // public async Task<IActionResult> CreateBulkMovie([FromBody] IList<CreateMovieRequest> request,
+    //     CancellationToken token)
+    // {
+    //     foreach (var item in request)
+    //     {
+    //         var movie = item.MapToMovie();
+    //         await movieService.CreateAsync(movie, token);
+    //     }
+    //     return NoContent();
+    //
+    // }
+    
     [HttpGet(ApiEndpoints.Movies.Get)]
     public async Task<IActionResult> Get([FromRoute] string idOrSlug,
         CancellationToken token)
@@ -40,10 +55,14 @@ public class MoviesController(IMovieService movieService) : ControllerBase
     }
     
     [HttpGet(ApiEndpoints.Movies.GetAll)]
-    public async Task<IActionResult> GetAllMovies(CancellationToken token)
+    public async Task<IActionResult> GetAllMovies(
+        [FromQuery] GetAllMoviesRequest request,
+        CancellationToken token)
     {
         var userId = HttpContext.GetUserId();
-        var movies = await movieService.GetAllAsync(userId, token);
+        var options = request.MapToOptions()
+            .WithUser(userId);
+        var movies = await movieService.GetAllAsync(options, token);
         var response = movies.MapToMoviesResponse();
         return Ok(response);
     }
