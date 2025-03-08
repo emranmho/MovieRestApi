@@ -54,8 +54,7 @@ public class MovieService(
         movie.Rating = ratings.Rating;
         movie.UserRating = ratings.UserRating;
         return movie;
-        
-        return movie;
+
     }
 
     public Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default )
