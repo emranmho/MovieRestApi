@@ -13,6 +13,7 @@ namespace Movies.API.Controllers;
 [ApiController]
 [Authorize]
 [ApiVersion(1.0)]
+[ApiVersion(2.0)]
 public class MoviesController(IMovieService movieService) : ControllerBase
 {
     [Authorize(AuthConstant.TrustedMemberPolicyName)]
@@ -60,8 +61,8 @@ public class MoviesController(IMovieService movieService) : ControllerBase
     }
     
     [HttpGet(ApiEndpoints.Movies.GetAll)]
-  
-    public async Task<IActionResult> GetAllMovies(
+    [MapToApiVersion(1.0)]
+    public async Task<IActionResult> GetAllMoviesV1(
         [FromQuery] GetAllMoviesRequest request,
         CancellationToken token)
     {
@@ -74,6 +75,21 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok(response);
     }
     
+    [HttpGet(ApiEndpoints.Movies.GetAll)]
+    [MapToApiVersion(2.0)]
+    public async Task<IActionResult> GetAllMoviesV2(
+        [FromQuery] GetAllMoviesRequest request,
+        CancellationToken token)
+    {
+        var userId = HttpContext.GetUserId();
+        var options = request.MapToOptions()
+            .WithUser(userId);
+        var movies = await movieService.GetAllAsync(options, token);
+        var movieCount = await movieService.GetCountAsync(options.Title, options.YearOfRelease, token);
+        var response = movies.MapToMoviesResponse(request.Page, request.PageSize, movieCount);
+        return Ok(response);
+    }
+
 
     
     [Authorize(AuthConstant.AdminUserPolicyName)]
