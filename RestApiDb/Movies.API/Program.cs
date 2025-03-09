@@ -1,4 +1,5 @@
 using System.Text;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Movies.API;
@@ -45,6 +46,14 @@ builder.Services.AddAuthorization(x =>
         )
     ));
 });
+
+builder.Services.AddApiVersioning(x =>
+{
+    x.DefaultApiVersion = new ApiVersion(1, 0);
+    x.AssumeDefaultVersionWhenUnspecified = true;
+    x.ReportApiVersions = true;
+    // x.ApiVersionReader = new HeaderApiVersionReader("api-version");
+}).AddMvc();
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();

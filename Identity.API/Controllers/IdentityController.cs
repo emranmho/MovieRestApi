@@ -11,7 +11,7 @@ namespace Identity.API.Controllers;
 public class IdentityController : ControllerBase
 {
     private const string TokenSecret = "FromZerotoHeroRESTAPIsInNETAuthenticationAndAuthorization";
-    private static readonly TimeSpan TokenLifetime = TimeSpan.FromHours(8);
+    private static readonly TimeSpan TokenLifetime = TimeSpan.FromDays(2);
 
     [HttpPost("token")]
     public IActionResult GenerateToken([FromBody] TokenGenerationRequest request)

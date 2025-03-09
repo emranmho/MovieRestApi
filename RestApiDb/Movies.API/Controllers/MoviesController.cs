@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movies.API.Auth;
@@ -11,6 +12,7 @@ namespace Movies.API.Controllers;
 
 [ApiController]
 [Authorize]
+[ApiVersion(1.0)]
 public class MoviesController(IMovieService movieService) : ControllerBase
 {
     [Authorize(AuthConstant.TrustedMemberPolicyName)]
@@ -51,10 +53,14 @@ public class MoviesController(IMovieService movieService) : ControllerBase
             return NotFound();
         }
         var response = movie.MapToMovieResponse();
+        
+         
+        
         return Ok(response);
     }
     
     [HttpGet(ApiEndpoints.Movies.GetAll)]
+  
     public async Task<IActionResult> GetAllMovies(
         [FromQuery] GetAllMoviesRequest request,
         CancellationToken token)
@@ -67,6 +73,8 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         var response = movies.MapToMoviesResponse(request.Page, request.PageSize, movieCount);
         return Ok(response);
     }
+    
+
     
     [Authorize(AuthConstant.AdminUserPolicyName)]
     [HttpPut(ApiEndpoints.Movies.Update)]
