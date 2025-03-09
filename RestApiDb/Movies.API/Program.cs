@@ -7,6 +7,7 @@ using Movies.API.Auth;
 using Movies.API.Mapping;
 using Movies.Application;
 using Movies.Application.Database;
+using Movies.Application.Health;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +57,10 @@ builder.Services.AddApiVersioning(x =>
 }).AddMvc();
 
 builder.Services.AddControllers();
+
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("Database");
+
 builder.Services.AddOpenApi();
 builder.Services.AddApplicationServices();
 builder.Services.AddDatabase(config["Database:ConnectionString"]);
@@ -73,6 +78,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapHealthChecks("_health");
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
