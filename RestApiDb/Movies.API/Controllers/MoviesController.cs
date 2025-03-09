@@ -21,6 +21,7 @@ public class MoviesController(
     : ControllerBase
 {
     [Authorize(AuthConstant.TrustedMemberPolicyName)]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     [HttpPost(ApiEndpoints.Movies.Create)]
     public async Task<IActionResult> CreateMovie([FromBody]CreateMovieRequest request,
         CancellationToken token)
@@ -65,6 +66,7 @@ public class MoviesController(
         return Ok(response);
     }
     
+ 
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     [MapToApiVersion(1.0)]
     [OutputCache(PolicyName = "MovieCache")]
@@ -117,11 +119,13 @@ public class MoviesController(
         return Ok(response);
     }
     
-    [Authorize(AuthConstant.TrustedMemberPolicyName)]
+    [Authorize(AuthConstant.AdminUserPolicyName)]
     [HttpDelete(ApiEndpoints.Movies.Delete)]
     public async Task<IActionResult> DeleteMovie([FromRoute] Guid id,
         CancellationToken token)
     {
+        var userId = HttpContext.GetUserId();
+
         var deleted = await movieService.DeleteByIdAsync(id, token);
         if(!deleted)
         {
