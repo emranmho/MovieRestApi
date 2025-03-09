@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Movies.API.Auth;
 using Movies.API.Mapping;
 using Movies.Application.Models;
@@ -11,10 +12,13 @@ using Movies.Contracts.Requests;
 namespace Movies.API.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [ApiVersion(1.0)]
 [ApiVersion(2.0)]
-public class MoviesController(IMovieService movieService) : ControllerBase
+public class MoviesController(
+    IMovieService movieService,
+    IOutputCacheStore outputCacheStore) 
+    : ControllerBase
 {
     [Authorize(AuthConstant.TrustedMemberPolicyName)]
     [HttpPost(ApiEndpoints.Movies.Create)]
@@ -23,6 +27,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
     {
         var movie = request.MapToMovie();
         await movieService.CreateAsync(movie, token);
+        await outputCacheStore.EvictByTagAsync("movies", token);
         return CreatedAtAction(nameof(Get), new { idOrSlug = movie.Id }, movie);
     }
     
@@ -62,6 +67,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
     
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     [MapToApiVersion(1.0)]
+    [OutputCache(PolicyName = "MovieCache")]
     public async Task<IActionResult> GetAllMoviesV1(
         [FromQuery] GetAllMoviesRequest request,
         CancellationToken token)
@@ -107,6 +113,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
             return NotFound();
         }
         var response = movie.MapToMovieResponse();
+        await outputCacheStore.EvictByTagAsync("movies", token);
         return Ok(response);
     }
     
@@ -120,7 +127,8 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         {
             return NotFound();
         }
-        return NoContent();
+        await outputCacheStore.EvictByTagAsync("movies", token);
+        return Ok();
     }
     
 }
