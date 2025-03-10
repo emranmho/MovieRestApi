@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Movies.API;
 using Movies.API.Auth;
+using Movies.API.Endpoints;
 using Movies.API.Mapping;
 using Movies.Application;
 using Movies.Application.Database;
@@ -62,7 +63,7 @@ builder.Services.AddApiVersioning(x =>
     // x.ApiVersionReader = new HeaderApiVersionReader("api-version");
 }).AddMvc();
 
-builder.Services.AddControllers();
+// builder.Services.AddControllers();
 
 builder.Services.AddOutputCache(x =>
 {
@@ -85,6 +86,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
+app.CreateApiVersionSet();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -105,7 +107,8 @@ app.UseOutputCache();
 
 app.UseMiddleware<ValidationMappingMiddleware>();
 
-app.MapControllers();
+// app.MapControllers();
+app.MapApiEndpoints();
 
 var dbInitializer = app.Services.GetRequiredService<DbInitializer>();
 await dbInitializer.InitializeAsync();

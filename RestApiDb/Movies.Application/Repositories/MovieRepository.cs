@@ -185,6 +185,10 @@ public class MovieRepository(IDbConnectionFactory dbConnectionFactory) : IMovieR
             DELETE FROM Genres WHERE MovieId = @Id
             """, new { id }, cancellationToken: token));
         
+        await connection.ExecuteAsync(new CommandDefinition("""
+            DELETE FROM Ratings WHERE MovieId = @Id
+            """, new { id }, cancellationToken: token));
+
         var result = await connection.ExecuteAsync(new CommandDefinition("""
             DELETE FROM Movies WHERE Id = @Id
             """, new { id }, cancellationToken: token));

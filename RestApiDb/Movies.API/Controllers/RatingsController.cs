@@ -36,7 +36,7 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
     
     [Authorize]
     [HttpGet(ApiEndpoints.Ratings.GetUserRatings)]
-    public async Task<IActionResult> DeleteRate(CancellationToken token = default)
+    public async Task<IActionResult> GetUserRatings(CancellationToken token = default)
     {
         var userId = HttpContext.GetUserId();
         var ratings = await ratingService.GetRatingsForUserAsync(userId.Value, token);

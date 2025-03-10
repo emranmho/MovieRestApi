@@ -60,9 +60,6 @@ public class MoviesController(
             return NotFound();
         }
         var response = movie.MapToMovieResponse();
-        
-         
-        
         return Ok(response);
     }
     
@@ -79,7 +76,9 @@ public class MoviesController(
             .WithUser(userId);
         var movies = await movieService.GetAllAsync(options, token);
         var movieCount = await movieService.GetCountAsync(options.Title, options.YearOfRelease, token);
-        var response = movies.MapToMoviesResponse(request.Page, request.PageSize, movieCount);
+        var response = movies.MapToMoviesResponse(
+            request.Page.GetValueOrDefault(PagedRequest.DefaultPage),
+            request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize), movieCount);
         return Ok(response);
     }
     
@@ -94,7 +93,10 @@ public class MoviesController(
             .WithUser(userId);
         var movies = await movieService.GetAllAsync(options, token);
         var movieCount = await movieService.GetCountAsync(options.Title, options.YearOfRelease, token);
-        var response = movies.MapToMoviesResponse(request.Page, request.PageSize, movieCount);
+        var response = movies.MapToMoviesResponse(
+            request.Page.GetValueOrDefault(PagedRequest.DefaultPage),
+            request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize), 
+            movieCount);
         return Ok(response);
     }
 
