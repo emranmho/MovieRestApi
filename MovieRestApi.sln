@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "RestApiDb\Movies.API\Movies.API.csproj", "{97CA30FF-FF80-436D-8BD2-E35B908E330B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "Movies.API\Movies.API.csproj", "{97CA30FF-FF80-436D-8BD2-E35B908E330B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "RestApiDb\Movies.Application\Movies.Application.csproj", "{46B803C6-252F-4D8A-B074-6B1AFBBE4A02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "Movies.Application\Movies.Application.csproj", "{46B803C6-252F-4D8A-B074-6B1AFBBE4A02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "RestApiDb\Movies.Contracts\Movies.Contracts.csproj", "{D84C1893-67E4-41C8-BCBF-FB3D49475980}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "Movies.Contracts\Movies.Contracts.csproj", "{D84C1893-67E4-41C8-BCBF-FB3D49475980}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Identity.API\Identity.API.csproj", "{E20A6C2B-5D37-443B-B2D1-B91542682F77}"
 EndProject
