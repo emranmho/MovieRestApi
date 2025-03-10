@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "RestApiStaticData\Movies.API\Movies.API.csproj", "{A446942F-0854-4DAB-A914-D7C4662119F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "Movies.API\Movies.API.csproj", "{A446942F-0854-4DAB-A914-D7C4662119F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "RestApiStaticData\Movies.Application\Movies.Application.csproj", "{FEE18888-5885-4AB5-865D-6ADF73C553E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "Movies.Application\Movies.Application.csproj", "{FEE18888-5885-4AB5-865D-6ADF73C553E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "RestApiStaticData\Movies.Contracts\Movies.Contracts.csproj", "{5FC7A8ED-1698-441D-B922-0C05B747993F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "Movies.Contracts\Movies.Contracts.csproj", "{5FC7A8ED-1698-441D-B922-0C05B747993F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
