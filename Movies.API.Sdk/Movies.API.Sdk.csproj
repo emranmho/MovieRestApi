@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Movies.Contracts\Movies.Contracts.csproj" />
-      <ProjectReference Include="..\RestApiDb\Movies.Contracts\Movies.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
