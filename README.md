@@ -60,7 +60,7 @@ git checkout Auth
    dotnet run
    ```
 
-4. Access the API at `https://localhost:7211` or `http://localhost:5211`
+4. Access the API at `https://localhost:5001` or `http://localhost:5000`
 
 ## Authentication Flow
 
