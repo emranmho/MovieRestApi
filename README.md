@@ -1,62 +1,58 @@
-# Movie RestApi - BasicAPI Implementation
 
-This branch implements a fundamental REST API for movie management using ASP.NET Core with in memory database.
 
-## Overview
 
-The `BasicApi` branch provides a straightforward implementation of a movie management API with basic CRUD operations using in memory database. This serves as the foundation for more advanced features in other branches. Added a Postman collection file (Rest API collection.postman_collection.json) for testing the API endpoints.
+# MovieRestApi - BasicApi Branch
 
-## Setup Instructions
+This branch implements a simple Movie CRUD API using an in-memory database.
 
-### Prerequisites
+## What's Included
 
-- .NET SDK 8.0 or higher
-- Git
-- Postman
+- Basic CRUD operations for movies (Create, Read, Update, Delete)
+- In-memory database for data storage
+- RESTful API design principles
 
-### Steps to Run
+## Prerequisites
 
-1. Clone the repository and switch to this branch:
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or newer
+- [Postman](https://www.postman.com/downloads/) or similar tool for API testing
+
+## How to Clone
+
+```bash
+# Clone the repository
+git clone https://github.com/emranmho/MovieRestApi.git
+
+# Navigate to the repository folder
+cd MovieRestApi
+
+# Checkout the BasicApi branch
+git checkout BasicApi
+```
+
+## Installation
+
+1. Navigate to the project directory and restore dependencies:
    ```bash
-   git clone https://github.com/emranmho/MovieRestApi.git
-   cd MovieRestApi
-   git checkout BasicApi
+   dotnet restore
    ```
-   
+
 2. Run the application:
    ```bash
    dotnet run
    ```
 
-3. The API will be available at:
-    - https://localhost:5001
-    - http://localhost:5000
-
-## Key Features
-
-- **Movie Entity**: Includes properties like Title, ReleaseYear, Genre, etc.
-- **CRUD Operations**:
-    - Create new movies via POST endpoint
-    - Retrieve movie(s) via GET endpoints
-    - Update existing movies via PUT endpoint
-    - Delete movies via DELETE endpoint
+3. Access the API at `https://localhost:5001` or `http://localhost:5000`
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/movies | Retrieve all movies |
-| GET | /api/movies/{id} | Retrieve a specific movie by ID |
-| POST | /api/movies | Create a new movie |
-| PUT | /api/movies/{id} | Update an existing movie |
-| DELETE | /api/movies/{id} | Delete a movie |
-
-## Postman Collection
-
-A Postman collection (**Rest API collection.postman_collection.json**) is included in this repository to help you test the API. The collection contains requests for all CRUD operations.
+| Method | Endpoint         | Description                     |
+|--------|------------------|---------------------------------|
+| GET    | /api/movies      | Get all movies                  |
+| GET    | /api/movies/{id} | Get a movie by its ID           |
+| POST   | /api/movies      | Create a new movie              |
+| PUT    | /api/movies/{id} | Update an existing movie        |
+| DELETE | /api/movies/{id} | Delete a movie                  |
 
 ## Next Steps
 
-In the next section, we will move to reading from a database with Dapper and PostgreSQL for more persistent data storage.
-
-
+Check out the [RealDatabaseData](https://github.com/emranmho/MovieRestApi/tree/RealDatabaseData) branch to see how to implement PostgreSQL database integration with Dapper.
