@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "175432f0-23a2-4cc6-a147-447303b52602",
+		"name": "Movie REST API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093563"
+	},
+	"item": [
+		{
+			"name": "Identity",
+			"item": [
+				{
+					"name": "Token Generator",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userid\": \"d8566de3-b1a6-4a9b-b842-8e3887a82e41\",\r\n    \"email\": \"emran@mhoemran.com\",\r\n    \"customClaims\": {\r\n         \"admin\": false,\r\n         \"trusted_member\": false\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Create movie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "ab327789chj90890kch934kkc89384h3k4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Nick the Greek xx\",\r\n    \"YearOfRelease\": 2022,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/movies",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create movie Bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"Title\": \"Nick the Greek 1\",\r\n    \"YearOfRelease\": 2015,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 2\",\r\n    \"YearOfRelease\": 2016,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 3\",\r\n    \"YearOfRelease\": 2017,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 4\",\r\n    \"YearOfRelease\": 2018,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 5\",\r\n    \"YearOfRelease\": 2019,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 6\",\r\n    \"YearOfRelease\": 2020,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 7\",\r\n    \"YearOfRelease\": 2021,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 8\",\r\n    \"YearOfRelease\": 2022,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 9\",\r\n    \"YearOfRelease\": 2023,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek 10\",\r\n    \"YearOfRelease\": 2024,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: The Beginning\",\r\n    \"YearOfRelease\": 2010,\r\n    \"Genres\": [\r\n      \"Comedy\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: The Heist\",\r\n    \"YearOfRelease\": 2011,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Crime\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: Lost in Vegas\",\r\n    \"YearOfRelease\": 2012,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Adventure\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: Casino Royale\",\r\n    \"YearOfRelease\": 2013,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Thriller\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: The Big Bet\",\r\n    \"YearOfRelease\": 2014,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Drama\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek vs. The Mafia\",\r\n    \"YearOfRelease\": 2025,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Action\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: Jackpot\",\r\n    \"YearOfRelease\": 2026,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Adventure\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: High Stakes\",\r\n    \"YearOfRelease\": 2027,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Thriller\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: The Final Gamble\",\r\n    \"YearOfRelease\": 2028,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Drama\"\r\n    ]\r\n  },\r\n  {\r\n    \"Title\": \"Nick the Greek: The Ultimate Bet\",\r\n    \"YearOfRelease\": 2029,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Action\"\r\n    ]\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/movies/bulk",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movie",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/movies/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/movies",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update movie",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Title\": \"Nick the Greek\",\r\n    \"YearOfRelease\": 2023,\r\n    \"Genres\": [\r\n      \"Comedy\",\r\n      \"Action\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/movies/{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete movie",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/movies/{id}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ratings",
+			"item": [
+				{
+					"name": "Rate movie",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/movies/{id}/ratings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								"{id}",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my ratings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/ratings/me",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"ratings",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rating",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/movies/{id}/ratings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"movies",
+								"{id}",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJkN2YxNy1lYTA0LTRhYzEtYTMwOS0zN2M5YmYyMzU3ZGEiLCJzdWIiOiJlbXJhbkBtaG9lbXJhbi5jb20iLCJlbWFpbCI6ImVtcmFuQG1ob2VtcmFuLmNvbSIsInVzZXJpZCI6ImQ4NTY2ZGUzLWIxYTYtNGE5Yi1iODQyLThlMzg4N2E4MmU0MiIsImFkbWluIjp0cnVlLCJ0cnVzdGVkX21lbWJlciI6dHJ1ZSwibmJmIjoxNzQxNTEwODI1LCJleHAiOjE3NDE2ODM2MjUsImlhdCI6MTc0MTUxMDgyNSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5taG9lbXJhbi5jb20iLCJhdWQiOiJodHRwczovL21vdmllcy5taG9lbXJhbi5jb20ifQ.ggjGHbgAzCjpkbqDQifZBaANE3Q4wLC6nstDroR7dKE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
